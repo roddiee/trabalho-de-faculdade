@@ -2,30 +2,36 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(252, 252, 252);
+    background-color: rgb(255, 255, 255);
     text-align: center;
 
 }
 
 header {
-    background-color: rgb(25, 163, 117);
+    background-color: rgb(152, 202, 186);
     color: white;
     padding: 15px 0;
     font-size: 24px;
-    border: 1px solid black;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav {
-    background-color: rgba(25, 163, 117);
-    padding: 10px;
+    background-color: rgb(152, 202, 186);
+    padding: 12px 50px 12px 12px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
+
 }
 
 #links-menu {
     display: flex;
-    gap: 20px;
+    gap: 15px;
 
 }
 
@@ -35,4 +41,38 @@ nav a {
     padding: 10px 15px;
     font-size: 18px;
     border-radius: 5px;
+    transition: all 0.3s ease-in-out;
 }
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+#menu-icon { 
+    width: 30px;
+    height: auto;
+   position: absolute;
+   right: 1px;
+   top: 20%;
+   transform: translate(-50%);
+}
+ /*responsividade*/
+ 
+ @media (max-width: 768px){
+    nav {
+        flex-direction: column;
+        padding: 12px;
+    }
+ 
+ #links-menu {
+    flex-direction: column;
+    gap: 10px;
+ }
+nav a { 
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+ }
