@@ -1,78 +1,169 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
+/* 🔹 Reset de estilos */
+* {
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 255, 255);
-    text-align: center;
-
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
 }
 
-header {
-    background-color: rgb(152, 202, 186);
-    color: white;
-    padding: 15px 0;
-    font-size: 24px;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+body {
+    height: 100vh;
 }
 
-nav {
-    background-color: rgb(152, 202, 186);
-    padding: 12px 50px 12px 12px;
+/* 🔹 Barra lateral inicial (fechada, mas com ícones visíveis) */
+.sidebar-menu {
+    width: 60px; /* Começa pequeno */
+    height: 100vh;
+    background-color: rgb(151, 201, 245);
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 3px 0 0 rgb(42, 61, 235);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
-
-}
-
-#links-menu {
-    display: flex;
-    gap: 15px;
-
-}
-
-nav a {
-    color: rgb(10, 0, 0);
-    text-decoration: none;
-    padding: 10px 15px;
-    font-size: 18px;
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
-}
-
-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-}
-
-#menu-icon { 
-    width: 30px;
-    height: auto;
-   position: absolute;
-   right: 1px;
-   top: 20%;
-   transform: translate(-50%);
-}
- /*responsividade*/
- 
- @media (max-width: 768px){
-    nav {
-        flex-direction: column;
-        padding: 12px;
-    }
- 
- #links-menu {
     flex-direction: column;
-    gap: 10px;
- }
-nav a { 
-    display: block;
+    padding-top: 20px;
+    overflow: hidden; /* Evita que o conteúdo apareça quando fechado */
+    transition: width 0.3s ease-in-out;
+}
+
+/* 🔹 Quando passar o mouse, expande */
+.sidebar-menu:hover {
+    width: 250px;
+}
+
+/* 🔹 Ajustando a lista */
+.sidebar-menu ul {
     width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none; /* Corrigido o erro */
+}
+
+/* 🔹 Ajustando os itens do menu */
+.sidebar-menu .item-menu {
+    height: 50px; /* Diminui a altura */
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: flex-start; /* Alinha o conteúdo à esquerda */
+    padding: 55px 6px; /* Reduz o espaçamento interno */
+}
+
+/* 🔹 Links do menu */
+.sidebar-menu .item-menu a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 40px 10px;
+    width: 100%;
+}
+
+/* 🔹 Ícones SEMPRE visíveis */
+.sidebar-menu .item-menu a .icon {
+    font-size: 24px;
+    min-width: 40px; /* Mantém o ícone alinhado */
     text-align: center;
 }
 
- }
+/* 🔹 Texto escondido inicialmente */
+.sidebar-menu .item-menu a .txt-link {
+    opacity: 0; /* Texto invisível quando fechado */
+    white-space: nowrap; /* Evita quebra de linha */
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* 🔹 Texto aparece ao expandir */
+.sidebar-menu:hover .item-menu a .txt-link {
+    opacity: 1;
+}
+
+/* 🔹 Efeito de hover */
+.sidebar-menu .item-menu:hover {
+    background-color: rgb(99, 182, 255);
+    height: 50px;
+}
+
+/* 🔹 Botão de expandir */
+.btn-expandir {
+    position: absolute;
+    top: 0;
+    left: 19px;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgb(42, 61, 235) !important;
+    opacity: 0%;
+}
+main {
+    padding: 20px;
+    margin-left: 60px; /* Ajustado para o menu fechado */
+    width: calc(100% - 60px); /* Garante que ocupe o espaço certo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* Garante que ocupe toda a altura */
+    text-align: center;
+    color: black;
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.sidebar-menu:hover ~ main {
+    margin-left: 250px;
+    width: calc(100% - 250px); /* Ajusta largura quando expandido */
+}
+
+footer{
+    flex-direction: column;
+    text-align: left;
+    padding: 20px;
+    margin-left: 60px; 
+}
+.imagem-centralizada{
+    max-width: 60%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.pagina-introducao { 
+    padding: 40px;
+    margin-left: 60px;
+    width: calc(100% - 60px);
+    max-width: 1100px; /* Aumentando um pouco a largura */
+    min-height: 100vh; /* Faz o conteúdo ocupar toda a altura da tela */
+    text-align: justify;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    margin: auto; /* Centraliza na tela */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+}
+.pagina-introducao p {
+    margin-bottom: 20px;
+}
+.pagina-introducao h1,
+.pagina-introducao h2{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+/*deixa a citacao em destaque*/
+.pagina-introducao blockquote{
+    font-size: italic;
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-left: 5px solid #2a3deb;
+    margin: 20px 0;
+}
+/* 🔹 Ajusta a lista */
+.pagina-introducao ul {
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+.pagina-introducao ul li {
+    margin-bottom: 10px;
+}
